@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
@@ -25,7 +26,7 @@ public class Produto implements Serializable {
 	private String nome;
 	private Double preco;
 	
-	@JsonManagedReference // Evita loop infinito no JSON
+	@JsonBackReference // Evita loop infinito no JSON
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA", 
 	joinColumns = @JoinColumn(name = "produto_id"), 
